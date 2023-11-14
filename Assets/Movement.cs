@@ -5,6 +5,17 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public Rigidbody body;
+    public float jumpcountdown;
+    public void Jump()
+    {
+        body.AddForce(new Vector3(0, 200f, 0));
+        jumpcountdown = 1;
+        Invoke("WaitOneSec", 1);
+    }
+    public void WaitOneSec() {
+        jumpcountdown = 0;
+    
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +34,12 @@ public class Movement : MonoBehaviour
         {
             body.AddForce(new Vector3(-5, 0, 0));
         }
-        if (Input.GetKey("w"))
+        if (Input.GetKey("w") & jumpcountdown ==0)
         {
-            body.AddForce(new Vector3(0, 3, 0));
-            
+            Jump();
+           
         }
-
+        //Constant foward movement
         body.AddForce(new Vector3(0, 0, 3));
     }
 
