@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         
     }
 
@@ -27,12 +28,12 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey("d"))
         {
-            body.AddForce(new Vector3(5, 0, 0));
+            body.AddForce(new Vector3(2, 0, 0));
         }
 
         if (Input.GetKey("a"))
         {
-            body.AddForce(new Vector3(-5, 0, 0));
+            body.AddForce(new Vector3(-2, 0, 0));
         }
         if (Input.GetKey("w") & jumpcountdown ==0)
         {
@@ -40,7 +41,7 @@ public class Movement : MonoBehaviour
            
         }
         //Constant foward movement
-        body.AddForce(new Vector3(0, 0, 3));
+        transform.position += transform.forward * (8 * Time.deltaTime);
     }
 
 }
