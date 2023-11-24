@@ -19,8 +19,8 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
-        
+    
+
     }
 
     // Update is called once per frame
@@ -39,6 +39,12 @@ public class Movement : MonoBehaviour
         {
             Jump();
            
+        }
+        if (Input.GetKey("s") & jumpcountdown == 0) {
+           transform.localScale = transform.localScale * 0.5f;
+            jumpcountdown = 1;
+            Invoke("WaitOneSec",1);
+         
         }
         //Constant foward movement
         transform.position += transform.forward * (8 * Time.deltaTime);
