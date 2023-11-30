@@ -14,7 +14,11 @@ public class Movement : MonoBehaviour
     }
     public void WaitOneSec() {
         jumpcountdown = 0;
-    
+        
+    }
+
+    public void UnDuck() {
+        transform.localScale = transform.localScale * 2f;
     }
     // Start is called before the first frame update
     void Start()
@@ -43,7 +47,8 @@ public class Movement : MonoBehaviour
         if (Input.GetKey("s") & jumpcountdown == 0) {
            transform.localScale = transform.localScale * 0.5f;
             jumpcountdown = 1;
-            Invoke("WaitOneSec",1);
+            Invoke("UnDuck", 1);
+            Invoke("WaitOneSec",2);
          
         }
         //Constant foward movement
