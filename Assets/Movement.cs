@@ -5,15 +5,15 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public Rigidbody body;
-    public float jumpcountdown;
+    public float countdownOne;
     public void Jump()
     {
         body.AddForce(new Vector3(0, 200f, 0));
-        jumpcountdown = 1;
+        countdownOne = 1;
         Invoke("WaitOneSec", 1);
     }
     public void WaitOneSec() {
-        jumpcountdown = 0;
+        countdownOne = 0;
         
     }
 
@@ -39,16 +39,16 @@ public class Movement : MonoBehaviour
         {
             body.AddForce(new Vector3(-2, 0, 0));
         }
-        if (Input.GetKey("w") & jumpcountdown ==0)
+        if (Input.GetKey("w") & countdownOne ==0)
         {
             Jump();
            
         }
-        if (Input.GetKey("s") & jumpcountdown == 0) {
+        if (Input.GetKey("s") & countdownOne == 0) {
            transform.localScale = transform.localScale * 0.5f;
-            jumpcountdown = 1;
-            Invoke("UnDuck", 1);
-            Invoke("WaitOneSec",2);
+            countdownOne = 1;
+            Invoke("UnDuck", 0.5f);
+            Invoke("WaitOneSec",1);
          
         }
         //Constant foward movement
