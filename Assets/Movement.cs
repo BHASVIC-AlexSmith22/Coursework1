@@ -39,7 +39,7 @@ public class Movement : MonoBehaviour
         {
             body.AddForce(new Vector3(-2, 0, 0));
         }
-        if (Input.GetKey("w") & countdownOne ==0)
+        if (Input.GetKey("w") & countdownOne ==0 & body.transform.position.y >= 1)
         {
             Jump();
            
