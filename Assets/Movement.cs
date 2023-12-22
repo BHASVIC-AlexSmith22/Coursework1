@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     {
         Debug.Log("Death called");
         transform.position = new Vector3(0, 1, 0);
+        body.velocity = Vector3.zero;
     }
     public void Jump()
     {
@@ -53,6 +54,11 @@ public class Movement : MonoBehaviour
         {
             Jump();
            
+        }
+        if (body.transform.position.y <= -2)
+        {
+            Death();
+
         }
         if (Input.GetKey("s") & countdownOne == 0) {
            transform.localScale = transform.localScale * DuckHeight;

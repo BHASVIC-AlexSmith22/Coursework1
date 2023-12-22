@@ -12,10 +12,8 @@ public class Obstacles : MonoBehaviour
     }
     void OnCollisionEnter(Collision Play)
     {
-        if (Play.gameObject.name == "Player")
-        {
-            
-            kill.Death();
+        if(Play.gameObject.name == "Player") {
+            kill.Death(); 
         }
         
     }
