@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - tagplayer
+  - Buff
   layers:
   - Default
   - TransparentFX

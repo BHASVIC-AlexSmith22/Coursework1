@@ -5,17 +5,39 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public Rigidbody body;
+    Speedboostblock SpeedReset;
     public float countdownOne;
     public int SideSpeed = 300;
     public int ForwardVelocity = 8;
     public int JumpHeight = 200;
     public float DuckHeight = 0.5f;
-
+    public int Switcheroo;
     public void Death()
     {
         Debug.Log("Death called");
         transform.position = new Vector3(0, 1, 0);
         body.velocity = Vector3.zero;
+        DuckHeight = 0.5f;
+        JumpHeight = 200;
+        ForwardVelocity = 8;
+        SideSpeed = 300;
+        SpeedReset.Enable();
+    }
+    public void Finish()
+    {
+        Debug.Log("finished level");
+        SideSpeed = 0;
+        ForwardVelocity = 0;
+    }
+    public void SpeedBoost()
+    {
+        Debug.Log("Speed Boost Activated");
+        ForwardVelocity = 20;
+        Invoke("ResetSpeed",2);
+    }
+    public void ResetSpeed()
+    {
+        ForwardVelocity = 8;
     }
     public void Jump()
     {
@@ -34,7 +56,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
+        SpeedReset = GameObject.FindGameObjectWithTag("Buff").GetComponent<Speedboostblock>();
 
     }
 
