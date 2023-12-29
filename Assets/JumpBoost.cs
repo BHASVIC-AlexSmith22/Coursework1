@@ -1,29 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 
-public class Speedboostblock : MonoBehaviour
+public class JumpBoost : MonoBehaviour
 {
-    // Start is called before the first frame update
-  
-    Movement Speedy;
+    Movement Jumpy;
     void Start()
     {
-        Speedy = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+        Jumpy = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
     }
     void OnCollisionEnter(Collision Playi)
     {
         if (Playi.gameObject.name == "Player")
         {
-            Speedy.SpeedBoost();
+            Jumpy.JumpBoost();
             Disable();
         }
 
     }
     private void Disable()
     {
-         gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void Enable()
@@ -33,6 +30,7 @@ public class Speedboostblock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+
     }
+    // Update is called once per frame
 }

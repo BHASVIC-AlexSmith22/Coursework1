@@ -6,6 +6,9 @@ TagManager:
   tags:
   - tagplayer
   - Buff
+  - JumpBoost
+  - SpeedBoost
+  - FogCube
   layers:
   - Default
   - TransparentFX

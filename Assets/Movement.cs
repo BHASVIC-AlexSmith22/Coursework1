@@ -6,12 +6,15 @@ public class Movement : MonoBehaviour
 {
     public Rigidbody body;
     Speedboostblock SpeedReset;
+    JumpBoost JumpReset;
+    FogCube FogReset;
     public float countdownOne;
     public int SideSpeed = 300;
     public int ForwardVelocity = 8;
     public int JumpHeight = 200;
     public float DuckHeight = 0.5f;
     public int Switcheroo;
+    //Death and finish mechanics called from other scripts
     public void Death()
     {
         Debug.Log("Death called");
@@ -22,6 +25,9 @@ public class Movement : MonoBehaviour
         ForwardVelocity = 8;
         SideSpeed = 300;
         SpeedReset.Enable();
+        JumpReset.Enable();
+        FogReset.Enable();
+        RenderSettings.fog = false;
     }
     public void Finish()
     {
@@ -29,40 +35,67 @@ public class Movement : MonoBehaviour
         SideSpeed = 0;
         ForwardVelocity = 0;
     }
+    //effects called from other scripts
     public void SpeedBoost()
     {
         Debug.Log("Speed Boost Activated");
         ForwardVelocity = 20;
         Invoke("ResetSpeed",2);
     }
+    public void JumpBoost()
+    {
+        Debug.Log(" Jump Boost Activated");
+        JumpHeight = 400;
+        Invoke("ResetJump", 2);
+    }
+    public void FogCube() 
+    {
+        Debug.Log(" Fog Activated");
+        RenderSettings.fog = true;
+        Invoke("ResetFog", 3.5f);
+    }
+    //reset effects which are invoked above
     public void ResetSpeed()
     {
         ForwardVelocity = 8;
     }
+    public void ResetJump()
+    {
+        JumpHeight = 200;
+    }
+    public void ResetFog() 
+    {
+        RenderSettings.fog = false;
+    }
+    //jump method
     public void Jump()
     {
         body.AddForce(new Vector3(0, JumpHeight, 0));
         countdownOne = 1;
         Invoke("WaitOneSec", 1);
     }
+    //timer method for jump and duck
     public void WaitOneSec() {
         countdownOne = 0;
         
     }
-
+    // unduck method called after timer
     public void UnDuck() {
         transform.localScale = transform.localScale * 2f;
     }
     // Start is called before the first frame update
     void Start()
     {
-        SpeedReset = GameObject.FindGameObjectWithTag("Buff").GetComponent<Speedboostblock>();
-
+        //linking other scripts to fields
+        SpeedReset = GameObject.FindGameObjectWithTag("SpeedBoost").GetComponent<Speedboostblock>();
+        JumpReset = GameObject.FindGameObjectWithTag("JumpBoost").GetComponent<JumpBoost>();
+        FogReset = GameObject.FindGameObjectWithTag("FogCube").GetComponent<FogCube>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //basic movement and controls
         if (Input.GetKey("d"))
         {
             body.AddForce(new Vector3(SideSpeed * Time.deltaTime, 0, 0));
@@ -72,7 +105,7 @@ public class Movement : MonoBehaviour
         {
             body.AddForce(new Vector3(-SideSpeed * Time.deltaTime, 0, 0));
         }
-        if (Input.GetKey("w") & countdownOne ==0 & body.transform.position.y >= 1)
+        if (Input.GetKey("w") & countdownOne ==0 & body.transform.position.y >= 1 & body.transform.position.y <= 1.01f)
         {
             Jump();
            
