@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpBoost : MonoBehaviour
+public class KeyChangeUp : MonoBehaviour
 {
-    Movement Jumpy;
+    Movement KeyChange;
     void Start()
     {
-        Jumpy = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+        KeyChange = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
     }
     void OnCollisionEnter(Collision Playi)
     {
         if (Playi.gameObject.name == "Player")
         {
-            Jumpy.JumpBoost();
+            KeyChange.KeyChangeUp();
             Disable();
         }
 
@@ -29,10 +29,10 @@ public class JumpBoost : MonoBehaviour
     {
         gameObject.SetActive(true);
     }
+
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-    // Update is called once per frame
 }

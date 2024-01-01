@@ -9,6 +9,7 @@ TagManager:
   - JumpBoost
   - SpeedBoost
   - FogCube
+  - KeyUp
   layers:
   - Default
   - TransparentFX

@@ -8,13 +8,23 @@ public class Movement : MonoBehaviour
     Speedboostblock SpeedReset;
     JumpBoost JumpReset;
     FogCube FogReset;
+    KeyChangeUp KeyUpBlockReset;
     public float countdownOne;
     public int SideSpeed = 300;
     public int ForwardVelocity = 8;
     public int JumpHeight = 200;
     public float DuckHeight = 0.5f;
     public int Switcheroo;
+    public int ArrayPos = 0;
+    //variables which control movement controls
+    public UnityEngine.KeyCode UpKey = (KeyCode)'w';
+    public UnityEngine.KeyCode DownKey = (KeyCode)'s' ;
+    public UnityEngine.KeyCode LeftKey = (KeyCode)'a';
+    public UnityEngine.KeyCode RightKey = (KeyCode)'d';
+    KeyCode[] LetterValueArray = new KeyCode[] { KeyCode.R, KeyCode.P, KeyCode.X, KeyCode.F };
+
     //Death and finish mechanics called from other scripts
+    //called from Obstacles and this scripts update function:
     public void Death()
     {
         Debug.Log("Death called");
@@ -27,8 +37,10 @@ public class Movement : MonoBehaviour
         SpeedReset.Enable();
         JumpReset.Enable();
         FogReset.Enable();
+        KeyUpBlockReset.Enable();
         RenderSettings.fog = false;
     }
+      //called from finish script:
     public void Finish()
     {
         Debug.Log("finished level");
@@ -36,25 +48,36 @@ public class Movement : MonoBehaviour
         ForwardVelocity = 0;
     }
     //effects called from other scripts
+     //called from SpeedBoostBlock:
     public void SpeedBoost()
     {
         Debug.Log("Speed Boost Activated");
         ForwardVelocity = 20;
         Invoke("ResetSpeed",2);
     }
+        //called from JumpBoost:
     public void JumpBoost()
     {
         Debug.Log(" Jump Boost Activated");
         JumpHeight = 400;
         Invoke("ResetJump", 2);
     }
+     //called from fog cube:
     public void FogCube() 
     {
         Debug.Log(" Fog Activated");
         RenderSettings.fog = true;
         Invoke("ResetFog", 3.5f);
     }
-    //reset effects which are invoked above
+    //called from keychange up
+    public void KeyChangeUp()
+    {
+        Debug.Log("Key change up");
+        UpKey = LetterValueArray[ArrayPos];
+        ArrayPos = ArrayPos + 1;
+
+    }
+    //reset effects which are invoked in above scripts
     public void ResetSpeed()
     {
         ForwardVelocity = 8;
@@ -90,37 +113,46 @@ public class Movement : MonoBehaviour
         SpeedReset = GameObject.FindGameObjectWithTag("SpeedBoost").GetComponent<Speedboostblock>();
         JumpReset = GameObject.FindGameObjectWithTag("JumpBoost").GetComponent<JumpBoost>();
         FogReset = GameObject.FindGameObjectWithTag("FogCube").GetComponent<FogCube>();
+        KeyUpBlockReset = GameObject.FindGameObjectWithTag("KeyUp").GetComponent<KeyChangeUp>();
+
+        //initiating values for letter array
+       
     }
 
     // Update is called once per frame
     void Update()
     {
         //basic movement and controls
-        if (Input.GetKey("d"))
+        // Right movement
+        if (Input.GetKey(RightKey))
         {
             body.AddForce(new Vector3(SideSpeed * Time.deltaTime, 0, 0));
         }
-
-        if (Input.GetKey("a"))
+        // Left movement
+        if (Input.GetKey(LeftKey))
         {
             body.AddForce(new Vector3(-SideSpeed * Time.deltaTime, 0, 0));
         }
-        if (Input.GetKey("w") & countdownOne ==0 & body.transform.position.y >= 1 & body.transform.position.y <= 1.01f)
+        // jump movement
+        if (Input.GetKey(UpKey) & countdownOne ==0 & body.transform.position.y >= 1 & body.transform.position.y <= 1.01f)
         {
             Jump();
            
         }
-        if (body.transform.position.y <= -2)
-        {
-            Death();
-
-        }
-        if (Input.GetKey("s") & countdownOne == 0) {
+    
+        //Duck movement 
+        if (Input.GetKey(DownKey) & countdownOne == 0) {
            transform.localScale = transform.localScale * DuckHeight;
             countdownOne = 1;
             Invoke("UnDuck", 0.5f);
             Invoke("WaitOneSec",1);
          
+        }
+        //kills player when they fall off side of map
+        if (body.transform.position.y <= -2)
+        {
+            Death();
+
         }
         //Constant foward movement
         transform.position += transform.forward * (ForwardVelocity * Time.deltaTime);
