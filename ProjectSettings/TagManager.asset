@@ -10,6 +10,7 @@ TagManager:
   - SpeedBoost
   - FogCube
   - KeyUp
+  - KeyDown
   layers:
   - Default
   - TransparentFX

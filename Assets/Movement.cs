@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     JumpBoost JumpReset;
     FogCube FogReset;
     KeyChangeUp KeyUpBlockReset;
+    KeyChangeDown KeyDownBlockReset;
     public float countdownOne;
     public int SideSpeed = 300;
     public int ForwardVelocity = 8;
@@ -16,6 +17,7 @@ public class Movement : MonoBehaviour
     public float DuckHeight = 0.5f;
     public int Switcheroo;
     public int ArrayPos = 0;
+    public int ArrayStartPos = 0;
     //variables which control movement controls
     public UnityEngine.KeyCode UpKey = (KeyCode)'w';
     public UnityEngine.KeyCode DownKey = (KeyCode)'s' ;
@@ -38,8 +40,14 @@ public class Movement : MonoBehaviour
         JumpReset.Enable();
         FogReset.Enable();
         KeyUpBlockReset.Enable();
+        KeyDownBlockReset.Enable();
         RenderSettings.fog = false;
-    }
+       UpKey = (KeyCode)'w';
+         DownKey = (KeyCode)'s';
+        LeftKey = (KeyCode)'a';
+         RightKey = (KeyCode)'d';
+        ArrayPos = ArrayStartPos;
+}
       //called from finish script:
     public void Finish()
     {
@@ -74,6 +82,13 @@ public class Movement : MonoBehaviour
     {
         Debug.Log("Key change up");
         UpKey = LetterValueArray[ArrayPos];
+        ArrayPos = ArrayPos + 1;
+
+    }
+    public void KeyChangeDown()
+    {
+        Debug.Log("Key change down");
+        DownKey = LetterValueArray[ArrayPos];
         ArrayPos = ArrayPos + 1;
 
     }
@@ -114,9 +129,10 @@ public class Movement : MonoBehaviour
         JumpReset = GameObject.FindGameObjectWithTag("JumpBoost").GetComponent<JumpBoost>();
         FogReset = GameObject.FindGameObjectWithTag("FogCube").GetComponent<FogCube>();
         KeyUpBlockReset = GameObject.FindGameObjectWithTag("KeyUp").GetComponent<KeyChangeUp>();
+        KeyDownBlockReset = GameObject.FindGameObjectWithTag("KeyDown").GetComponent<KeyChangeDown>();
 
         //initiating values for letter array
-       
+
     }
 
     // Update is called once per frame
