@@ -5,9 +5,11 @@ using UnityEngine;
 public class KeyChangeUp : MonoBehaviour
 {
     Movement KeyChange;
+    public GameObject[] gameObjectArray;
     void Start()
     {
         KeyChange = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+        GameObject[] gameObjectArray = GameObject.FindGameObjectsWithTag("KeyUp");
     }
     void OnCollisionEnter(Collision Playi)
     {
@@ -28,6 +30,10 @@ public class KeyChangeUp : MonoBehaviour
     public void Enable()
     {
         gameObject.SetActive(true);
+        foreach (GameObject KeyUp in gameObjectArray)
+        {
+            KeyUp.SetActive(true);
+        }
     }
 
     // Update is called once per frame

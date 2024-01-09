@@ -24,6 +24,7 @@ public class Movement : MonoBehaviour
     public UnityEngine.KeyCode LeftKey = (KeyCode)'a';
     public UnityEngine.KeyCode RightKey = (KeyCode)'d';
     KeyCode[] LetterValueArray = new KeyCode[] { KeyCode.R, KeyCode.P, KeyCode.X, KeyCode.F };
+    
 
     //Death and finish mechanics called from other scripts
     //called from Obstacles and this scripts update function:
@@ -47,7 +48,8 @@ public class Movement : MonoBehaviour
         LeftKey = (KeyCode)'a';
          RightKey = (KeyCode)'d';
         ArrayPos = ArrayStartPos;
-}
+       
+    }
       //called from finish script:
     public void Finish()
     {
@@ -130,6 +132,7 @@ public class Movement : MonoBehaviour
         FogReset = GameObject.FindGameObjectWithTag("FogCube").GetComponent<FogCube>();
         KeyUpBlockReset = GameObject.FindGameObjectWithTag("KeyUp").GetComponent<KeyChangeUp>();
         KeyDownBlockReset = GameObject.FindGameObjectWithTag("KeyDown").GetComponent<KeyChangeDown>();
+      
 
         //initiating values for letter array
 
