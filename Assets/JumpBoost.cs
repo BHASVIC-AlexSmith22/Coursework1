@@ -27,7 +27,10 @@ public class JumpBoost : MonoBehaviour
     //Called from movement:
     public void Enable()
     {
-        gameObject.SetActive(true);
+        for (int KidCount = 0; KidCount < transform.childCount; KidCount++)
+        {
+            transform.GetChild(KidCount).gameObject.SetActive(true);
+        }
     }
     // Update is called once per frame
     void Update()

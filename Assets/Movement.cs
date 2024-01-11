@@ -43,7 +43,7 @@ public class Movement : MonoBehaviour
         KeyUpBlockReset.Enable();
         KeyDownBlockReset.Enable();
         RenderSettings.fog = false;
-       UpKey = (KeyCode)'w';
+        UpKey = (KeyCode)'w';
          DownKey = (KeyCode)'s';
         LeftKey = (KeyCode)'a';
          RightKey = (KeyCode)'d';
@@ -127,11 +127,11 @@ public class Movement : MonoBehaviour
     void Start()
     {
         //linking other scripts to fields
-        SpeedReset = GameObject.FindGameObjectWithTag("SpeedBoost").GetComponent<Speedboostblock>();
-        JumpReset = GameObject.FindGameObjectWithTag("JumpBoost").GetComponent<JumpBoost>();
-        FogReset = GameObject.FindGameObjectWithTag("FogCube").GetComponent<FogCube>();
-        KeyUpBlockReset = GameObject.FindGameObjectWithTag("KeyUp").GetComponent<KeyChangeUp>();
-        KeyDownBlockReset = GameObject.FindGameObjectWithTag("KeyDown").GetComponent<KeyChangeDown>();
+        SpeedReset = GameObject.FindGameObjectWithTag("SpeedBoostTemp").GetComponent<Speedboostblock>();
+        JumpReset = GameObject.FindGameObjectWithTag("JumpBoostTemp").GetComponent<JumpBoost>();
+        FogReset = GameObject.FindGameObjectWithTag("FogCubeTemp").GetComponent<FogCube>();
+        KeyUpBlockReset = GameObject.FindGameObjectWithTag("KeyUpTemp").GetComponent<KeyChangeUp>();
+        KeyDownBlockReset = GameObject.FindGameObjectWithTag("KeyDownTemp").GetComponent<KeyChangeDown>();
       
 
         //initiating values for letter array

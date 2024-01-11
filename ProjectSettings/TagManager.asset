@@ -11,6 +11,11 @@ TagManager:
   - FogCube
   - KeyUp
   - KeyDown
+  - KeyUpTemp
+  - SpeedBoostTemp
+  - FogCubeTemp
+  - KeyDownTemp
+  - JumpBoostTemp
   layers:
   - Default
   - TransparentFX
