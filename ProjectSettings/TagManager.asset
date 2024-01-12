@@ -16,6 +16,10 @@ TagManager:
   - FogCubeTemp
   - KeyDownTemp
   - JumpBoostTemp
+  - KeyLeftTemp
+  - KeyRightTemp
+  - KeyRight
+  - KeyLeft
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
     FogCube FogReset;
     KeyChangeUp KeyUpBlockReset;
     KeyChangeDown KeyDownBlockReset;
+    KeyChangeLeft KeyLeftBlockReset;
+    KeyChangeRight KeyRightBlockReset;
     public float countdownOne;
     public int SideSpeed = 300;
     public int ForwardVelocity = 8;
@@ -23,7 +25,7 @@ public class Movement : MonoBehaviour
     public UnityEngine.KeyCode DownKey = (KeyCode)'s' ;
     public UnityEngine.KeyCode LeftKey = (KeyCode)'a';
     public UnityEngine.KeyCode RightKey = (KeyCode)'d';
-    KeyCode[] LetterValueArray = new KeyCode[] { KeyCode.R, KeyCode.P, KeyCode.X, KeyCode.F };
+    KeyCode[] LetterValueArray = new KeyCode[] { KeyCode.R, KeyCode.P, KeyCode.X, KeyCode.F, KeyCode.G };
     
 
     //Death and finish mechanics called from other scripts
@@ -42,6 +44,8 @@ public class Movement : MonoBehaviour
         FogReset.Enable();
         KeyUpBlockReset.Enable();
         KeyDownBlockReset.Enable();
+        KeyLeftBlockReset.Enable();
+        KeyRightBlockReset.Enable();
         RenderSettings.fog = false;
         UpKey = (KeyCode)'w';
          DownKey = (KeyCode)'s';
@@ -94,6 +98,20 @@ public class Movement : MonoBehaviour
         ArrayPos = ArrayPos + 1;
 
     }
+    public void KeyChangeLeft()
+    {
+        Debug.Log("Key change Left");
+        LeftKey = LetterValueArray[ArrayPos];
+        ArrayPos = ArrayPos + 1;
+
+    }
+    public void KeyChangeRight()
+    {
+        Debug.Log("Key change right");
+        RightKey = LetterValueArray[ArrayPos];
+        ArrayPos = ArrayPos + 1;
+
+    }
     //reset effects which are invoked in above scripts
     public void ResetSpeed()
     {
@@ -132,7 +150,8 @@ public class Movement : MonoBehaviour
         FogReset = GameObject.FindGameObjectWithTag("FogCubeTemp").GetComponent<FogCube>();
         KeyUpBlockReset = GameObject.FindGameObjectWithTag("KeyUpTemp").GetComponent<KeyChangeUp>();
         KeyDownBlockReset = GameObject.FindGameObjectWithTag("KeyDownTemp").GetComponent<KeyChangeDown>();
-      
+        KeyLeftBlockReset = GameObject.FindGameObjectWithTag("KeyLeftTemp").GetComponent<KeyChangeLeft>();
+        KeyRightBlockReset = GameObject.FindGameObjectWithTag("KeyRightTemp").GetComponent<KeyChangeRight>();
 
         //initiating values for letter array
 
@@ -168,7 +187,7 @@ public class Movement : MonoBehaviour
          
         }
         //kills player when they fall off side of map
-        if (body.transform.position.y <= -2)
+        if (body.transform.position.y <= -3)
         {
             Death();
 

@@ -23,7 +23,7 @@ public class KeyChangeUp : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-    // resets block on player death
+    // resets all child objects of same class on player death
     //Called from movement:
     public void Enable()
     {
