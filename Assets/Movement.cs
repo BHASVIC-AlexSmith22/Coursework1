@@ -20,12 +20,14 @@ public class Movement : MonoBehaviour
     public int Switcheroo;
     public int ArrayPos = 0;
     public int ArrayStartPos = 0;
+    public int LevelStartX = 0;
     //variables which control movement controls
     public UnityEngine.KeyCode UpKey = (KeyCode)'w';
     public UnityEngine.KeyCode DownKey = (KeyCode)'s' ;
     public UnityEngine.KeyCode LeftKey = (KeyCode)'a';
     public UnityEngine.KeyCode RightKey = (KeyCode)'d';
-    KeyCode[] LetterValueArray = new KeyCode[] { KeyCode.R, KeyCode.P, KeyCode.X, KeyCode.F, KeyCode.G };
+    //array which holds next letter for key change blocks
+    KeyCode[] LetterValueArray = new KeyCode[] { KeyCode.R, KeyCode.P, KeyCode.X, KeyCode.F, KeyCode.G, KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R,KeyCode.T };
     
 
     //Death and finish mechanics called from other scripts
@@ -33,7 +35,7 @@ public class Movement : MonoBehaviour
     public void Death()
     {
         Debug.Log("Death called");
-        transform.position = new Vector3(0, 1, 0);
+        transform.position = new Vector3(LevelStartX, 1, 0);
         body.velocity = Vector3.zero;
         DuckHeight = 0.5f;
         JumpHeight = 200;
@@ -58,8 +60,17 @@ public class Movement : MonoBehaviour
     public void Finish()
     {
         Debug.Log("finished level");
-        SideSpeed = 0;
-        ForwardVelocity = 0;
+        DuckHeight = 0.5f;
+        JumpHeight = 200;
+        ForwardVelocity = 8;
+        SideSpeed = 300;
+        UpKey = (KeyCode)'w';
+        DownKey = (KeyCode)'s';
+        LeftKey = (KeyCode)'a';
+        RightKey = (KeyCode)'d';
+        ArrayStartPos = ArrayPos;
+        LevelStartX = LevelStartX + 60;
+        transform.position = new Vector3(LevelStartX, 1, 0);
     }
     //effects called from other scripts
      //called from SpeedBoostBlock:
