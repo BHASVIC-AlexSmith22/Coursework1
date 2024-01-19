@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
     public UnityEngine.KeyCode LeftKey = (KeyCode)'a';
     public UnityEngine.KeyCode RightKey = (KeyCode)'d';
     //array which holds next letter for key change blocks
-    KeyCode[] LetterValueArray = new KeyCode[] { KeyCode.R, KeyCode.P, KeyCode.X, KeyCode.F, KeyCode.G, KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R,KeyCode.T };
+    KeyCode[] LetterValueArray = new KeyCode[] { KeyCode.R, KeyCode.P, KeyCode.X, KeyCode.F, KeyCode.G, KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R,KeyCode.T, KeyCode.Y };
     
 
     //Death and finish mechanics called from other scripts
