@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     KeyChangeDown KeyDownBlockReset;
     KeyChangeLeft KeyLeftBlockReset;
     KeyChangeRight KeyRightBlockReset;
+    UpLetter UpLetGuiChange;
     public float countdownOne;
     public int SideSpeed = 300;
     public int ForwardVelocity = 8;
@@ -54,7 +55,9 @@ public class Movement : MonoBehaviour
         LeftKey = (KeyCode)'a';
          RightKey = (KeyCode)'d';
         ArrayPos = ArrayStartPos;
-       
+        UpLetGuiChange.ChangeKey();
+
+
     }
       //called from finish script:
     public void Finish()
@@ -100,6 +103,7 @@ public class Movement : MonoBehaviour
         Debug.Log("Key change up");
         UpKey = LetterValueArray[ArrayPos];
         ArrayPos = ArrayPos + 1;
+        UpLetGuiChange.ChangeKey();
 
     }
     public void KeyChangeDown()
@@ -163,6 +167,7 @@ public class Movement : MonoBehaviour
         KeyDownBlockReset = GameObject.FindGameObjectWithTag("KeyDownTemp").GetComponent<KeyChangeDown>();
         KeyLeftBlockReset = GameObject.FindGameObjectWithTag("KeyLeftTemp").GetComponent<KeyChangeLeft>();
         KeyRightBlockReset = GameObject.FindGameObjectWithTag("KeyRightTemp").GetComponent<KeyChangeRight>();
+        UpLetGuiChange = GameObject.FindGameObjectWithTag("UpLetterGui").GetComponent<UpLetter>();
 
         //initiating values for letter array
 
