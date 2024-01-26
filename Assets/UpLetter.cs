@@ -10,12 +10,14 @@ using UnityEngine.UI;
 public class UpLetter : MonoBehaviour
   {
     public Movement GetLett;
-    public  TextMeshProUGUI LetterUp;
     public UnityEngine.KeyCode letup1;
+    private TMP_Text LetterUp;
     // Start is called before the first frame update
     void Start()
-    {
-        LetterUp.SetText("x");
+    {   
+        //set textmesh pro reference
+        LetterUp = GetComponent<TMP_Text>();
+        LetterUp.text = ("w");
         // called from movement
         GetLett =GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
   

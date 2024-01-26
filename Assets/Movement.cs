@@ -74,6 +74,7 @@ public class Movement : MonoBehaviour
         ArrayStartPos = ArrayPos;
         LevelStartX = LevelStartX + 60;
         transform.position = new Vector3(LevelStartX, 1, 0);
+        UpLetGuiChange.ChangeKey();
     }
     //effects called from other scripts
      //called from SpeedBoostBlock:
