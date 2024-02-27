@@ -21,6 +21,9 @@ TagManager:
   - KeyRight
   - KeyLeft
   - UpLetterGui
+  - DownLetterGui
+  - LeftLetterGui
+  - RightLetterGui
   layers:
   - Default
   - TransparentFX

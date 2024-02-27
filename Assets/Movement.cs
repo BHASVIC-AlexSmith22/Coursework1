@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public Rigidbody body;
+    // declares (pointers to other scripts) 
     Speedboostblock SpeedReset;
     JumpBoost JumpReset;
     FogCube FogReset;
@@ -13,6 +14,10 @@ public class Movement : MonoBehaviour
     KeyChangeLeft KeyLeftBlockReset;
     KeyChangeRight KeyRightBlockReset;
     UpLetter UpLetGuiChange;
+    DownLetter DownLetGuiChange;
+    LeftLetter LeftLetGuiChange;
+    RightLetter RightLetGuiChange;
+    //(public var list)
     public float countdownOne;
     public int SideSpeed = 300;
     public int ForwardVelocity = 8;
@@ -36,8 +41,10 @@ public class Movement : MonoBehaviour
     public void Death()
     {
         Debug.Log("Death called");
+        //resets posisiton and velocity
         transform.position = new Vector3(LevelStartX, 1, 0);
         body.velocity = Vector3.zero;
+        //resets vars and calls reset methods
         DuckHeight = 0.5f;
         JumpHeight = 200;
         ForwardVelocity = 8;
@@ -56,7 +63,9 @@ public class Movement : MonoBehaviour
          RightKey = (KeyCode)'d';
         ArrayPos = ArrayStartPos;
         UpLetGuiChange.ChangeKey();
-
+        DownLetGuiChange.ChangeKey();
+        LeftLetGuiChange.ChangeKey();
+        RightLetGuiChange.ChangeKey();
 
     }
       //called from finish script:
@@ -75,9 +84,13 @@ public class Movement : MonoBehaviour
         LevelStartX = LevelStartX + 60;
         transform.position = new Vector3(LevelStartX, 1, 0);
         UpLetGuiChange.ChangeKey();
+        DownLetGuiChange.ChangeKey();
+        LeftLetGuiChange.ChangeKey();
+        RightLetGuiChange.ChangeKey();
+
     }
     //effects called from other scripts
-     //called from SpeedBoostBlock:
+    //called from SpeedBoostBlock:
     public void SpeedBoost()
     {
         Debug.Log("Speed Boost Activated");
@@ -112,21 +125,21 @@ public class Movement : MonoBehaviour
         Debug.Log("Key change down");
         DownKey = LetterValueArray[ArrayPos];
         ArrayPos = ArrayPos + 1;
-
+        DownLetGuiChange.ChangeKey();
     }
     public void KeyChangeLeft()
     {
         Debug.Log("Key change Left");
         LeftKey = LetterValueArray[ArrayPos];
         ArrayPos = ArrayPos + 1;
-
+        LeftLetGuiChange.ChangeKey();
     }
     public void KeyChangeRight()
     {
         Debug.Log("Key change right");
         RightKey = LetterValueArray[ArrayPos];
         ArrayPos = ArrayPos + 1;
-
+        RightLetGuiChange.ChangeKey();
     }
     //reset effects which are invoked in above scripts
     public void ResetSpeed()
@@ -169,6 +182,9 @@ public class Movement : MonoBehaviour
         KeyLeftBlockReset = GameObject.FindGameObjectWithTag("KeyLeftTemp").GetComponent<KeyChangeLeft>();
         KeyRightBlockReset = GameObject.FindGameObjectWithTag("KeyRightTemp").GetComponent<KeyChangeRight>();
         UpLetGuiChange = GameObject.FindGameObjectWithTag("UpLetterGui").GetComponent<UpLetter>();
+        DownLetGuiChange = GameObject.FindGameObjectWithTag("DownLetterGui").GetComponent<DownLetter>();
+        LeftLetGuiChange = GameObject.FindGameObjectWithTag("LeftLetterGui").GetComponent<LeftLetter>();
+        RightLetGuiChange = GameObject.FindGameObjectWithTag("RightLetterGui").GetComponent<RightLetter>();
 
         //initiating values for letter array
 
