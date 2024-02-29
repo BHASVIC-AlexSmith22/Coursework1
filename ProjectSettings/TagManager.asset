@@ -24,6 +24,7 @@ TagManager:
   - DownLetterGui
   - LeftLetterGui
   - RightLetterGui
+  - EndScreen
   layers:
   - Default
   - TransparentFX

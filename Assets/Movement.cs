@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour
     DownLetter DownLetGuiChange;
     LeftLetter LeftLetGuiChange;
     RightLetter RightLetGuiChange;
+    EndScreen EndGameScreen;
     //(public var list)
     public float countdownOne;
     public int SideSpeed = 300;
@@ -33,7 +34,7 @@ public class Movement : MonoBehaviour
     public UnityEngine.KeyCode LeftKey = (KeyCode)'a';
     public UnityEngine.KeyCode RightKey = (KeyCode)'d';
     //array which holds next letter for key change blocks
-    KeyCode[] LetterValueArray = new KeyCode[] { KeyCode.R, KeyCode.P, KeyCode.X, KeyCode.F, KeyCode.G, KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R,KeyCode.T, KeyCode.Y };
+    KeyCode[] LetterValueArray = new KeyCode[] { KeyCode.R, KeyCode.P, KeyCode.X, KeyCode.F, KeyCode.G, KeyCode.Q, KeyCode.W, KeyCode.E, KeyCode.R,KeyCode.T, KeyCode.Y, KeyCode.U, KeyCode.I, KeyCode.O, KeyCode.P };
     
 
     //Death and finish mechanics called from other scripts
@@ -68,10 +69,11 @@ public class Movement : MonoBehaviour
         RightLetGuiChange.ChangeKey();
 
     }
-      //called from finish script:
+    //called from finish script:
     public void Finish()
     {
         Debug.Log("finished level");
+        int LevCount = 1;
         DuckHeight = 0.5f;
         JumpHeight = 200;
         ForwardVelocity = 8;
@@ -87,6 +89,10 @@ public class Movement : MonoBehaviour
         DownLetGuiChange.ChangeKey();
         LeftLetGuiChange.ChangeKey();
         RightLetGuiChange.ChangeKey();
+        if (LevCount == 2) {EndGameScreen.Enable();}
+        else{LevCount++; }
+        
+      
 
     }
     //effects called from other scripts
@@ -173,6 +179,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         //linking other scripts to fields
         SpeedReset = GameObject.FindGameObjectWithTag("SpeedBoostTemp").GetComponent<Speedboostblock>();
         JumpReset = GameObject.FindGameObjectWithTag("JumpBoostTemp").GetComponent<JumpBoost>();
@@ -185,6 +192,8 @@ public class Movement : MonoBehaviour
         DownLetGuiChange = GameObject.FindGameObjectWithTag("DownLetterGui").GetComponent<DownLetter>();
         LeftLetGuiChange = GameObject.FindGameObjectWithTag("LeftLetterGui").GetComponent<LeftLetter>();
         RightLetGuiChange = GameObject.FindGameObjectWithTag("RightLetterGui").GetComponent<RightLetter>();
+        EndGameScreen = GameObject.FindGameObjectWithTag("EndScreen").GetComponent<EndScreen>();
+
 
         //initiating values for letter array
 
