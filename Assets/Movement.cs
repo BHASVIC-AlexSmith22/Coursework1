@@ -124,7 +124,6 @@ public class Movement : MonoBehaviour
         UpKey = LetterValueArray[ArrayPos];
         ArrayPos = ArrayPos + 1;
         UpLetGuiChange.ChangeKey();
-
     }
     public void KeyChangeDown()
     {
@@ -236,6 +235,7 @@ public class Movement : MonoBehaviour
         }
         //Constant foward movement
         transform.position += transform.forward * (ForwardVelocity * Time.deltaTime);
+      
     }
 
 }
