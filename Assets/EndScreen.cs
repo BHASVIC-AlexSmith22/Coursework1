@@ -7,7 +7,7 @@ public class EndScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       gameObject.SetActive(false);
+      
     }
 
     // Update is called once per frame
@@ -17,6 +17,9 @@ public class EndScreen : MonoBehaviour
     }
     public void Enable() 
     {
-        gameObject.SetActive(true);
+        for (int KidCount = 0; KidCount < transform.childCount; KidCount++)
+        {
+            transform.GetChild(KidCount).gameObject.SetActive(true);
+        }
     }
 }

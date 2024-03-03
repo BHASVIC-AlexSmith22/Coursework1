@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1386,7 +1386,7 @@ Transform:
   m_GameObject: {fileID: 200619382}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.1, y: -0.38, z: 270.89}
+  m_LocalPosition: {x: -4.9, y: -0.38, z: 270.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2657,9 +2657,10 @@ GameObject:
   - component: {fileID: 397850657}
   - component: {fileID: 397850656}
   - component: {fileID: 397850655}
+  - component: {fileID: 397850659}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: EndScreen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2752,6 +2753,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &397850659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397850654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ebf25070690f8e4788fcb2298cf4d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &442389415
 GameObject:
   m_ObjectHideFlags: 0
@@ -6603,7 +6616,7 @@ GameObject:
   - component: {fileID: 861524927}
   - component: {fileID: 861524931}
   m_Layer: 0
-  m_Name: KeyUp (Template)
+  m_Name: KeyUp (template)
   m_TagString: KeyUpTemp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6694,7 +6707,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2056455617}
-  - {fileID: 1359212848}
   - {fileID: 1077913313}
   - {fileID: 1001799353}
   - {fileID: 1388853647}
@@ -6705,6 +6717,7 @@ Transform:
   - {fileID: 2058224759}
   - {fileID: 1073920416}
   - {fileID: 2073485391}
+  - {fileID: 1359212848}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &861524931
@@ -11864,7 +11877,6 @@ GameObject:
   - component: {fileID: 1403981131}
   - component: {fileID: 1403981133}
   - component: {fileID: 1403981132}
-  - component: {fileID: 1403981134}
   m_Layer: 5
   m_Name: EndScreenImage
   m_TagString: EndScreen
@@ -11930,18 +11942,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403981130}
   m_CullTransparentMesh: 1
---- !u!114 &1403981134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1403981130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ebf25070690f8e4788fcb2298cf4d01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1456740513
 GameObject:
   m_ObjectHideFlags: 0
@@ -14700,7 +14700,7 @@ Transform:
   m_GameObject: {fileID: 1829957758}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15, y: 1, z: 5.8}
+  m_LocalPosition: {x: -0, y: 1, z: 9.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14756,6 +14756,7 @@ MonoBehaviour:
   ArrayPos: 0
   ArrayStartPos: 0
   LevelStartX: 0
+  LevCount: 1
   UpKey: 119
   DownKey: 115
   LeftKey: 97
@@ -16215,7 +16216,7 @@ Transform:
   m_GameObject: {fileID: 1990964374}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 60.5, y: 0.73, z: 297.44}
+  m_LocalPosition: {x: 60.5, y: 0.73, z: 296.2}
   m_LocalScale: {x: 5, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18596,6 +18597,7 @@ SceneRoots:
   - {fileID: 241582594}
   - {fileID: 673843412}
   - {fileID: 456408641}
+  - {fileID: 861524930}
   - {fileID: 28312601}
   - {fileID: 593404276}
   - {fileID: 1344242892}
@@ -18610,7 +18612,6 @@ SceneRoots:
   - {fileID: 2134896575}
   - {fileID: 1383791483}
   - {fileID: 2135543233}
-  - {fileID: 861524930}
   - {fileID: 1026913686}
   - {fileID: 1386469186}
   - {fileID: 719194524}

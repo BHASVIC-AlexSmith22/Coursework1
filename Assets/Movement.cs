@@ -28,6 +28,7 @@ public class Movement : MonoBehaviour
     public int ArrayPos = 0;
     public int ArrayStartPos = 0;
     public int LevelStartX = 0;
+    public int LevCount = 1;
     //variables which control movement controls
     public UnityEngine.KeyCode UpKey = (KeyCode)'w';
     public UnityEngine.KeyCode DownKey = (KeyCode)'s' ;
@@ -72,8 +73,9 @@ public class Movement : MonoBehaviour
     //called from finish script:
     public void Finish()
     {
-        Debug.Log("finished level");
-        int LevCount = 1;
+        if (LevCount == 2) { EndGameScreen.Enable(); }
+        else { LevCount++; }
+        Debug.Log("finished level"); 
         DuckHeight = 0.5f;
         JumpHeight = 200;
         ForwardVelocity = 8;
@@ -89,8 +91,7 @@ public class Movement : MonoBehaviour
         DownLetGuiChange.ChangeKey();
         LeftLetGuiChange.ChangeKey();
         RightLetGuiChange.ChangeKey();
-        if (LevCount == 2) {EndGameScreen.Enable();}
-        else{LevCount++; }
+    
         
       
 
